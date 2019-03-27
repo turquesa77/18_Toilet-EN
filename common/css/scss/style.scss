@@ -1,0 +1,546 @@
+/* Scss Document */
+
+@charset "UTF-8";
+/*! ============================================
+※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+このCSSファイルはSassから生成されていますので、
+編集しないようご注意ください。
+※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
+============================================= */
+
+
+// --------------------------------------------
+// Style Guide
+// 基本的な考えは、OOCSSベース。
+// 
+// #命名規則
+// MindBEMdingをベースに以下のルールで記載。
+// block__element--modifier
+// ※Blockが複数単語になる場合は、「blockName」のようにキャメルケースにする。
+// ※分かりやすいクラス名は略名にする。
+// ※Block, Element, Modifierは、まとめて同じ箇所に記述する。
+// --------------------------------------------
+
+
+// ============================================
+// import css
+// ============================================
+
+//reset css
+@import "_base.scss";
+// "slick" slide show
+@import '_slick.scss';
+@import '_slick-theme.scss';
+// settings
+@import '_settings.scss';
+// module
+@import '_module.scss';
+// component
+@import '_g_header_fixed.scss'; // JMA menu
+@import '_c_headinfo.scss'; // headInfo in header
+@import '_c_megamenu.scss'; // megamenu in header
+@import '_c_keyvisual.scss'; // keyVisual
+@import '_c_information.scss'; // What's New
+@import '_c_contact.scss'; // contact in footer
+@import '_c_footer.scss'; // nav in footer
+@import '_c_timetable.scss'; // timeTable
+@import '_c_fee.scss'; // booth & fee
+@import '_c_visit.scss'; // visit
+@import '_c_download.scss'; // logo, banner download
+@import '_c_qanda.scss'; // FAQ
+
+
+// --------------------------------------------
+// Project
+// --------------------------------------------
+
+// JMA nav ------------------------------
+#global_link {
+	padding: 5px 10px;
+	@include media(sp) {
+		display: none;
+	}
+}
+
+// nav ------------------------------
+nav {
+	background-color: $color-sub1;
+	box-shadow: 0px 9px 3px -3px rgba(black, 0.1);
+	position: relative; // for box-shadow
+	z-index: 2; // for box-shadow
+}
+
+// links ------------------------------
+.links {
+	@include space-btm;
+	&__title {
+		text-align: center;
+	}
+	&__body {
+		background-color: white;
+		//padding: 20px;
+		padding: 20px 20px 20px 50px;
+		overflow: hidden;
+		@include media(sp) {
+			padding: 20px;
+		}
+		li {
+			text-align: center;
+		}
+		a {
+			@include hoverOpc;
+		}
+	}
+}
+
+// lower ------------------------------
+.lower {
+	@include space;
+	background-color: white;
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__photo {
+		max-width: 500px;
+		@include space;
+		margin: 0 auto 30px;
+		overflow: hidden;
+		img {
+			max-width: 500px;
+		}
+	}
+	&__btn {
+		max-width: 700px;
+		margin: 0 auto 80px;
+	}
+	@mixin define-style {
+		dt {
+			clear: left;
+			float: left;
+			@include media(sp) {
+				float: none;
+				width: 100%;
+			}
+		}
+	}
+	&__define {
+		max-width: 700px;
+		margin: 0 auto;
+		@include define-style;
+		dt {
+			width: 8em;
+			background-color: $color-main;
+			color: white;
+			padding: 7px 10px;
+		}
+		dd {
+			padding: 7px 10px 7px 10em;
+			margin-bottom: 10px;
+			background-color: $color-sub2;
+			@include media(sp) {
+				padding: 7px 10px;
+			}
+		}
+	}
+	&__define2 {
+		@include define-style;
+		dt {
+			width: 8em;
+		}
+		dd {
+			padding-left: 10em;
+			border-bottom: 1px solid #ccc;
+		}
+	}
+	&__append {
+		max-width: 700px;
+		margin: 0 auto 80px;
+		@include font-size(14);
+	}
+	&__fig {
+		max-width: 800px;
+		margin: 0 auto 80px;
+	}
+}
+
+// mobileArea ------------------------------
+.mobileArea {
+	@include media(pc) {
+		display: none;
+	}
+	&--inner {
+		padding: 20px 10px;
+	}
+	&__btn {
+		li + li {
+			margin-top: 10px;
+		}
+	}
+}
+
+// about ------------------------------
+.about {
+	@include space;
+	&__list {
+		li {
+			padding-left: 40px;
+			margin-bottom: 10px;
+			position: relative;
+		}
+		&__num {
+			position: absolute;
+			top: -1px;
+			left: 2px;
+			display: block;
+			width: 30px;
+			height: 30px;
+			background-color: $color-main;
+			color: white;
+			text-align: center;
+			border-radius: 50%;
+			padding-top: 3px;
+		}
+	}
+}
+
+// categ ------------------------------
+.categ {
+	&__list {
+		li {
+			display: inline-block;
+			margin-right: 1em;
+			line-height: 2;
+			&:before {
+				content: "●";
+				display: inline-block;
+				color: $color-main;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+// trend ------------------------------
+.trend {
+	&__bold {
+		font-weight: bold;
+	}
+	&__unit {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		&__70 {
+			width: 75%;
+			@include media(sp) {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		&__30 {
+			width: 33%;
+			text-align: center;
+			@include media(sp) {
+				width: 100%;
+			}
+		}
+	}
+	&__fig1 {
+		max-width: 500px;
+		margin: 0 auto;
+	}
+	&__fig2 {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+		}
+		figure {
+			width: 45%;
+			text-align: center;
+			@include media(sp) {
+				width: 100%;
+				max-width: 400px;
+				margin: 0 auto 10px;
+			}
+		}
+	}
+}
+
+// point ------------------------------
+.point {
+	&__title {
+		@include indent(2);
+		&__num {
+			display: inline-block;
+			background-color: $color-main;
+			color: white;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			@include font-size(30);
+			text-align: center;
+			padding-left: 50px;
+			margin-right: 10px;
+		}
+	}
+}
+
+// outline ------------------------------
+.outline {
+	&__tbl {
+		max-width: 750px;
+		margin-bottom: 50px;
+		&__logo {
+			max-width: 300px;
+		}
+	}
+	&__btn {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+}
+
+// target ------------------------------
+.target {
+	&__pageNav {
+		max-width: 400px;
+		margin: 0 auto 50px;
+	}
+	&--visitTbl {
+		margin-bottom: 50px;
+		th {
+			text-align: left;
+			width: 30%;
+		}
+	}
+	&--desc {
+		padding-top: 20px;
+		&--inner {
+			max-width: $width-main;
+		}
+		&__box {
+			padding: 25px;
+			border: 1px solid $color-type01;
+		}
+		&__title {
+			padding-left: 115px;
+			position: relative;
+			@include font-size(22);
+			font-weight: bold;
+			@include media(sp) {
+				padding-left: 0;
+				padding-top: 35px;
+			}
+		}
+		&__pop {
+			position: absolute;
+			top: -5px;
+			left: 6px;
+			transform: rotate(-15deg);
+			background-color: red;
+			color: white;
+			border-radius: 50%;
+			padding: 5px 10px;
+			@include font-size(20);
+			@include media(sp) {
+				top: -10px;
+				left: -15px;
+			}
+		}
+	}
+	&__fig {
+		text-align: center;
+	}
+}
+
+// targetCateg ------------------------------
+.targetCateg {
+	max-width: 1100px;
+	@include space-btm;
+	margin: 0 auto;
+	&--container {
+		background-color: white;
+	}
+	&--inner {
+		@include cardInner;
+	}
+	&__title {
+		@include font-size(22);
+		font-weight: 500;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+	&__append {
+		@include font-size(15);
+		text-align: center;
+		margin-bottom: 30px;
+	}
+	&__list {
+		@include font-size(15);
+		li {
+			//@include indent(1);
+			display: inline-block;
+			margin-right: 1em;
+			margin-bottom: 5px;
+			&:before {
+				content: "●";
+			}
+		}
+	}
+	&--1 {
+		.cardImg {
+			background: url(#{$imgDir}figImg_target01.jpg) 70% 40% no-repeat $color-main;
+		}
+	}
+	&--2 {
+		.cardImg {
+			order: 2;
+			background: url(#{$imgDir}figImg_target02.jpg) 45% 50% no-repeat $color-main;
+			&:after {
+				left: -100%;
+			}
+		}
+	}
+	&--3 {
+		.cardImg {
+			background: url(#{$imgDir}figImg_target03.jpg) 20% 45% no-repeat $color-main;
+		}
+	}
+	&--4 {
+		.cardImg {
+			order: 2;
+			background: url(#{$imgDir}figImg_target04.jpg) 50% 20% no-repeat $color-main;
+			&:after {
+				left: -100%;
+			}
+		}
+	}
+	&--5 {
+		.cardImg {
+			background: url(#{$imgDir}figImg_target05.jpg) 70% 60% no-repeat $color-main;
+		}
+	}
+	&--6 {
+		.cardImg {
+			order: 2;
+			background: url(#{$imgDir}figImg_target06.jpg) 40% 60% no-repeat $color-main;
+			&:after {
+				left: -100%;
+			}
+		}
+	}
+	&--7 {
+		.cardImg {
+			background: url(#{$imgDir}figImg_target07.jpg) 50% 20% no-repeat $color-main;
+		}
+	}
+	&--8 {
+		.cardImg {
+			order: 2;
+			background: url(#{$imgDir}figImg_target08.jpg) 50% 80% no-repeat $color-main;
+			&:after {
+				left: -100%;
+			}
+		}
+	}
+}
+
+// exhibit-fee ------------------------------
+.exhibit-fee {
+	background-color: white;
+	@include space-btm;
+	&__pageNav {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+}
+.apply {
+	&--inner {
+		max-width: $width-main;
+		@include media(sp) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	}
+	&__deadline {
+		margin-top: 15px;
+		color: red;
+	}
+	&__define {
+		dt {
+			clear: left;
+			float: left;
+			width: 10em;
+			font-weight: bold;
+			@include media(sp) {
+				float: none;
+				width: 100%;
+			}
+		}
+		dd {
+			padding-left: 12em;
+			padding-bottom: 5px;
+			margin-bottom: 15px;
+			border-bottom: 1px solid #ccc;
+			@include media(sp) {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+// exhibit-option ------------------------------
+.exhibit-option {
+	background-color: white;
+	@include space;
+	.booth {
+		padding-bottom: 0;
+	}
+}
+
+// qanda ------------------------------
+.qanda {
+	padding-bottom: 100px;
+	&--inner {
+		max-width: 800px;
+	}
+}
+
+// youtube ------------------------------
+.youtube {
+	@include space;
+	&--inner {
+		max-width: 1000px;
+	}
+	&__unit {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		@include media(sp) {
+			flex-flow: column;
+			align-items: center;
+		}
+		li {
+			width: 45%;
+			@include media(sp) {
+				width: 90%;
+			}
+			iframe {
+				width: 100%;
+			}
+			+ li {
+				@include media(sp) {
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+}
